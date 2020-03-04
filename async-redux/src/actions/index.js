@@ -1,17 +1,12 @@
-//lets start by defining the several synchronous action types and action creators
+import fetch from 'cross-fetch';
 
-//user can select a subreddit to display
-export const FETCH_SUBREDDIT_START = 'FETCH_SUBREDDIT_START';
-// user can press a 'refresh' button to update display
-export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
-//network request to dispatch the posts for some subreddit
-export const REQUEST_POSTS = 'REQUEST_POSTS';
-//we get the network request
-export const RECEIVE_POSTS = 'RECEIVE_POST';
+//lets start by defining the several synchronous action types and action creators
 
 //we also want to handle errors to dispatch an action on request failure
 export const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
+//user can select a subreddit to display
+export const FETCH_SUBREDDIT_START = 'FETCH_SUBREDDIT_START';
 export const selectSubReddit = (subreddit) => {
     return {
         type: FETCH_SUBREDDIT_START,
@@ -19,6 +14,8 @@ export const selectSubReddit = (subreddit) => {
     }
 };
 
+// user can press a 'refresh' button to update display
+export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
 export const invalidateSubreddit = (subreddit) => {
     return {
         type: INVALIDATE_SUBREDDIT,
@@ -26,6 +23,8 @@ export const invalidateSubreddit = (subreddit) => {
     }
 };
 
+//network request to dispatch the posts for some subreddit
+export const REQUEST_POSTS = 'REQUEST_POSTS';
 //this should be seperate from FETCH and REQUEST incase we need to fetch data independent of other actions
 const requestPosts = (subreddit) => {
     return {
@@ -34,6 +33,8 @@ const requestPosts = (subreddit) => {
     }
 };
 
+//we get the network request
+export const RECEIVE_POSTS = 'RECEIVE_POST';
 const receivePosts = (subreddit) => {
     return {
         type: RECEIVE_POSTS,
